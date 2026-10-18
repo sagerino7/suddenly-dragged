@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — Suddenly Dragged</title>
+<meta name="description" content="Prints, merch, and originals from Suddenly Dragged.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&family=Permanent+Marker&family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">Suddenly<span>Dragged</span></a>
+    <ul>
+      <li><a href="gallery.html" data-nav="gallery.html">Gallery</a></li>
+      <li><a href="sightings.html" data-nav="sightings.html">Sightings</a></li>
+      <li><a href="about.html" data-nav="about.html">About</a></li>
+      <li class="cta-item"><a href="shop.html" class="cta" data-nav="shop.html">Shop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" style="padding:64px 0 48px;">
+  <div class="wrap">
+    <div class="eyebrow">Prints · Merch · Originals</div>
+    <h1 style="font-size:clamp(36px,7vw,72px);">Shop</h1>
+    <div class="scrawl">"take it with you"</div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="callout" style="margin-bottom:40px;">
+      <div class="prose" style="max-width:none; color:#E6E0ED;">
+        <strong style="color:var(--magenta);">Setup needed:</strong> this page is wired for a Fourthwall store (same setup as sagecameron.com) but the Suddenly Dragged storefront hasn't been created yet. Once it exists, swap the placeholder link below for the real store URL — or embed it directly on this page.
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:repeat(2, minmax(0,1fr));">
+      <div class="card">
+        <div class="frame">Prints &amp; Merch</div>
+        <div class="body">
+          <div class="title">Prints &amp; apparel</div>
+          <div class="meta">Print-on-demand via Fourthwall — posters, prints, and apparel of the launch collection.</div>
+          <a href="#" class="btn" style="margin-top:12px; text-align:center;">Visit the Fourthwall store →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="frame">Originals</div>
+        <div class="body">
+          <div class="title">Original pieces</div>
+          <div class="meta">1-of-1 originals sold by inquiry — DM or email to ask about a piece in the <a href="gallery.html">gallery</a>.</div>
+          <a href="about.html#follow" class="btn blue" style="margin-top:12px; text-align:center;">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">Suddenly Dragged — &copy; <span id="year"></span> Sage Cameron &amp; John. All work original.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

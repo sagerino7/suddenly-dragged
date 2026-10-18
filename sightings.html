@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sightings — Suddenly Dragged</title>
+<meta name="description" content="A running log of Suddenly Dragged pieces left out in the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&family=Permanent+Marker&family=Archivo:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">Suddenly<span>Dragged</span></a>
+    <ul>
+      <li><a href="gallery.html" data-nav="gallery.html">Gallery</a></li>
+      <li><a href="sightings.html" data-nav="sightings.html">Sightings</a></li>
+      <li><a href="about.html" data-nav="about.html">About</a></li>
+      <li class="cta-item"><a href="shop.html" class="cta" data-nav="shop.html">Shop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" style="padding:64px 0 48px;">
+  <div class="wrap">
+    <div class="eyebrow">Field Notes</div>
+    <h1 style="font-size:clamp(36px,7vw,72px);">Sightings</h1>
+    <div class="scrawl">"part gallery, part scavenger hunt"</div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap" style="max-width:760px; margin:0 auto;">
+    <div class="prose" style="margin-bottom:32px;">
+      <p>Pieces get left out in the world — on lampposts, ledges, stairwells, wherever felt right that day. This is the running log. If you spot one, tag us.</p>
+    </div>
+    <div id="sightings-list"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">Suddenly Dragged — &copy; <span id="year"></span> Sage Cameron &amp; John. All work original.</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  // Renders data/sightings.json — add a new {where, neighborhood, when, note, image} entry
+  // to that file each time a piece gets left somewhere; no code changes needed here.
+  fetch('data/sightings.json')
+    .then(function (r) { return r.json(); })
+    .then(function (items) {
+      var list = document.getElementById('sightings-list');
+      if (!items.length) {
+        list.innerHTML = '<p class="prose">No sightings logged yet — check back soon.</p>';
+        return;
+      }
+      items
+        .slice()
+        .sort(function (a, b) { return new Date(b.when) - new Date(a.when); })
+        .forEach(function (item) {
+          var row = document.createElement('div');
+          row.className = 'sighting';
+          row.innerHTML =
+            '<div class="pin">SD</div>' +
+            '<div>' +
+              '<div class="where">' + item.where + (item.neighborhood ? ' &middot; ' + item.neighborhood : '') + '</div>' +
+              '<div class="when">' + item.when + '</div>' +
+              (item.note ? '<div class="note">' + item.note + '</div>' : '') +
+            '</div>';
+          list.appendChild(row);
+        });
+    })
+    .catch(function () {
+      document.getElementById('sightings-list').innerHTML = '<p class="prose">Couldn\'t load the log right now.</p>';
+    });
+</script>
+</body>
+</html>
